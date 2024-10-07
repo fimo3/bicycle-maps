@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Side from "./Components/Side"
 import About from "./About/About"
 import Contact from "./Contact/Contact"
-import Map from "./Map/Map"
 
 export default function App() {
   return (
@@ -26,11 +25,6 @@ export default function App() {
                   <p>Contact</p>
                 </a>
               </li>
-              <li>
-                <a href="/map">
-                  <p>Map</p>
-                </a>
-              </li>
             </ul>
           </nav>
         </header>
@@ -39,7 +33,6 @@ export default function App() {
           <Route path="/" element={<Side />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/map" element={<Map />} />{" "}
         </Routes>
       </div>
     </Router>
