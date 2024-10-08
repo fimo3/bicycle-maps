@@ -75,3 +75,21 @@ code {
 .map {
   width: 66.666%;
 }
+
+.leaflet-container {
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+}
+
+.leaflet-popup-tip {
+  background: #96d953;
+}
+
+.leaflet-control-attribution {
+  font-size: 10px;
+  color: #333;
+}

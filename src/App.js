@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Side from "./Components/Side"
 import About from "./About/About"
 import Contact from "./Contact/Contact"
+import ErrorBoundary from "./ErrorHandling/ErrorBoundary"
 
 export default function App() {
   return (
@@ -30,7 +31,14 @@ export default function App() {
         </header>
 
         <Routes>
-          <Route path="/" element={<Side />} />
+          <Route
+            path="/"
+            element={
+              <ErrorBoundary>
+                <Side />
+              </ErrorBoundary>
+            }
+          />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
