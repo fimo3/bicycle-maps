@@ -3,7 +3,7 @@ import Button from "../Components/Button"
 import DirectionsMiniPane from "../Components/DirectionsMiniPane"
 import logo from "../images/SAFCycle.png"
 
-const Home = () => {
+const Home = ({ onSubmit }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const onClick = () => {
@@ -26,7 +26,7 @@ const Home = () => {
 
       {isOpen && (
         <div>
-          <DirectionsMiniPane />
+          <DirectionsMiniPane onSubmit={onSubmit} />
         </div>
       )}
     </div>
