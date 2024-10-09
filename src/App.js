@@ -3,6 +3,7 @@ import Side from "./Components/Side"
 import About from "./About/About"
 import Contact from "./Contact/Contact"
 import ErrorBoundary from "./ErrorHandling/ErrorBoundary"
+import logo from "./images/SAFCycle.png"
 
 export default function App() {
   return (
@@ -10,23 +11,32 @@ export default function App() {
       <div className="App">
         <header className="App-header">
           <nav>
-            <ul>
-              <li>
-                <a href="/">
-                  <p>Home</p>
-                </a>
-              </li>
-              <li>
-                <a href="/about">
-                  <p>About</p>
-                </a>
-              </li>
-              <li>
-                <a href="/contact">
-                  <p>Contact</p>
-                </a>
-              </li>
-            </ul>
+            <div>
+              <ul>
+                <li>
+                  <a href="/" className="home-li">
+                    <p>Home</p>
+                    <img
+                      src={logo}
+                      width="50px"
+                      height="50px"
+                      alt="Home"
+                      className="home-logo logo"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a href="/about">
+                    <p>About</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="/contact">
+                    <p>Contact</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </nav>
         </header>
 

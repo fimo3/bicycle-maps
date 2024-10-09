@@ -17,6 +17,10 @@ nav ul {
   padding-right: 0px;
 }
 
+nav ul li:first-child {
+  display: flex;
+}
+
 p {
   font-size: 1.3em;
   padding-left: 20px;
@@ -31,9 +35,10 @@ h1 {
   padding-left: 20px;
   padding-right: 20px;
   font-size: 2.65em;
+  padding-top: 0px;
   text-decoration-line: underline;
   text-decoration-style: wavy;
-  text-decoration-thickness: 2.5px;
+  text-decoration-thickness: 3px;
   color: #96d953;
 }
 
@@ -77,19 +82,114 @@ code {
 }
 
 .leaflet-container {
+  width: auto;
+  border-left: 2px solid#96d953;
+}
+
+button a {
+  color: #f2f2f2;
+  text-decoration: none;
+}
+
+.directions-mini-pane {
+  background-color: #e8e8e6;
+  border-radius: 15px;
+  border: 3px solid #e1d7d7;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 20px;
+}
+
+.input {
+  background-color: #f2f2f2;
+  color: black;
+  width: 90%;
+  border-radius: 5px;
+  padding-top: 15px;
+  border: 2px solid #e1d7d7;
+  padding: 10px;
+  transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
+}
+
+.input:focus {
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  width: 50%;
+  border-color: #e8e8e6;
+  outline: none;
 }
 
-.leaflet-popup-content-wrapper {
-  border-radius: 8px;
+form {
+  padding: 0px 20px 10px 20px;
+}
+.Button {
+  font-size: 1.3em;
+  font-family: "Industry Test Ultra", sans-serif;
+  background-color: #96d953;
+  color: #f2f2f2;
+  cursor: pointer;
+  margin-left: 20px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 25%;
+  padding-right: 25%;
+  text-align: center;
+  text-decoration: none;
+  border: 3px solid #7db446;
+  border-radius: 5px;
+  box-shadow: 0px 0px 0px #31313180;
+  transition: all 0.12s ease-in-out;
 }
 
-.leaflet-popup-tip {
-  background: #96d953;
+.Button:active {
+  border-radius: 10px;
+  border-color: #68a42c;
+  outline: none;
+  box-shadow: 0px 1px 2px #3131314d;
+  transform: scale(0.99);
 }
 
-.leaflet-control-attribution {
-  font-size: 10px;
-  color: #333;
+form {
+  align-items: center;
+  justify-content: center;
+  display: flex-row;
+}
+
+label {
+  font-size: 1.2em;
+}
+
+.Directions-button-submit {
+  margin: 0;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+hr {
+  background-color: #e1d7d7;
+  color: #e1d7d7;
+  width: 100%;
+}
+img.logo {
+  margin-top: 10px;
+  border-radius: 20%;
+  margin-left: 10px;
+  box-shadow: 0px 0px 0px #000000a3;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+img.logo:hover {
+  transform: scale(1.05) rotate(3deg) translate(10px, 0);
+  box-shadow: 0px 2px 4px #000000a3;
+}
+
+.home-li {
+  display: flex;
+  justify-content: center;
+}
+
+.home-logo {
+  margin-top: 0px;
+  margin-bottom: 5px;
+  border: 3px solid #96d953;
 }
