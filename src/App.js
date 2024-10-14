@@ -2,9 +2,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Side from "./Components/Side"
 import About from "./About/About"
 import Contact from "./Contact/Contact"
-import ErrorBoundary from "./ErrorHandling/ErrorBoundary"
-import logo from "./images/SAFCycle.png"
-
 export default function App() {
   return (
     <Router>
@@ -14,15 +11,8 @@ export default function App() {
             <div>
               <ul>
                 <li>
-                  <a href="/" className="home-li">
+                  <a href="/">
                     <p>Home</p>
-                    <img
-                      src={logo}
-                      width="50px"
-                      height="50px"
-                      alt="Home"
-                      className="home-logo logo"
-                    />
                   </a>
                 </li>
                 <li>
@@ -41,14 +31,7 @@ export default function App() {
         </header>
 
         <Routes>
-          <Route
-            path="/"
-            element={
-              <ErrorBoundary>
-                <Side />
-              </ErrorBoundary>
-            }
-          />
+          <Route path="/" element={<Side />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>

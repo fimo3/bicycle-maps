@@ -5,9 +5,38 @@ import Button from "./Button"
 const DirectionsMiniPane = ({ onSubmit }) => {
   const [startLocation, setStartLocation] = useState("")
   const [endLocation, setEndLocation] = useState("")
+  const [startSuggestions, setStartSuggestions] = useState([])
+  const [endSuggestions, setEndSuggestions] = useState([])
+
+  const apiKey = "6cd58b04-031e-426a-a662-0194bc11d2ee"
+
+  const fetchSuggestions = async (query, setSuggestions) => {
+    if (!query) {
+      setSuggestions([])
+      return
+    }
+
+    const url = `https://graphhopper.com/api/1/geocode?q=${encodeURIComponent(
+      query
+    )}&key=${apiKey}`
+
+    try {
+      const response = await fetch(url)
+      const data = await response.json()
+
+      if (data && data.hits) {
+        const suggestions = data.hits.map((hit) => ({
+          name: hit.name,
+          point: hit.point,
+        }))
+        setSuggestions(suggestions)
+      }
+    } catch (error) {
+      console.error("Error fetching suggestions:", error)
+    }
+  }
 
   const geocode = async (location) => {
-    const apiKey = "6cd58b04-031e-426a-a662-0194bc11d2ee"
     const url = `https://graphhopper.com/api/1/geocode?q=${encodeURIComponent(
       location
     )}&key=${apiKey}`
@@ -27,6 +56,11 @@ const DirectionsMiniPane = ({ onSubmit }) => {
       console.error("Error fetching geocoding data:", error)
       return null
     }
+  }
+
+  const handleInputChange = (value, setLocation, setSuggestions) => {
+    setLocation(value)
+    fetchSuggestions(value, setSuggestions)
   }
 
   const getCurrentLocation = () => {
@@ -51,20 +85,21 @@ const DirectionsMiniPane = ({ onSubmit }) => {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    let startCoords
-    let endCoords
+    const getCoordinates = async (location, suggestions) => {
+      if (location.toLowerCase() === "your location") {
+        return await getCurrentLocation()
+      }
 
-    if (startLocation.toLowerCase() === "your location") {
-      startCoords = await getCurrentLocation()
-    } else {
-      startCoords = await geocode(startLocation)
+      const suggestion = suggestions.find((s) => s.name === location)
+      if (suggestion) {
+        return [suggestion.point.lat, suggestion.point.lng]
+      } else {
+        return await geocode(location)
+      }
     }
 
-    if (endLocation.toLowerCase() === "your location") {
-      endCoords = await getCurrentLocation()
-    } else {
-      endCoords = await geocode(endLocation)
-    }
+    const startCoords = await getCoordinates(startLocation, startSuggestions)
+    const endCoords = await getCoordinates(endLocation, endSuggestions)
 
     if (startCoords && endCoords) {
       onSubmit(startCoords, endCoords)
@@ -74,23 +109,33 @@ const DirectionsMiniPane = ({ onSubmit }) => {
   }
 
   return (
-    <div className="directions-mini-pane">
-      <h3>Directions</h3>
+    <div>
+      <h3>Route</h3>
       <form onSubmit={handleSubmit}>
         <label>Start location: </label>
         <Input
           type="text"
           value={startLocation}
-          onChange={(e) => setStartLocation(e.target.value)}
+          onChange={(e) =>
+            handleInputChange(
+              e.target.value,
+              setStartLocation,
+              setStartSuggestions
+            )
+          }
           placeholder="e.g. Your location"
+          suggestions={startSuggestions.map((suggestion) => suggestion.name)}
         />
         <hr />
         <label>End location: </label>
         <Input
           type="text"
           value={endLocation}
-          onChange={(e) => setEndLocation(e.target.value)}
+          onChange={(e) =>
+            handleInputChange(e.target.value, setEndLocation, setEndSuggestions)
+          }
           placeholder="e.g. 'Milin Kamak' №34 road..."
+          suggestions={endSuggestions.map((suggestion) => suggestion.name)}
         />
         <hr />
         <Button

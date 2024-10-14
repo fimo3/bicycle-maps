@@ -8,6 +8,10 @@ nav {
   background-color: #96d953;
 }
 
+.side-js {
+  display: flex;
+}
+
 nav ul {
   list-style-type: none;
   display: flex;
@@ -70,7 +74,73 @@ code {
   display: flex;
   float: left;
   width: 33.333%;
-  height: auto;
+  min-height: 20px;
+  max-height: inherit;
+  overflow-y: scroll;
+}
+
+.dropdown {
+  position: relative;
+  width: 90%;
+}
+
+.directions-info-pane {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: #f2f2f2;
+  padding: 10px;
+  border-radius: 15px;
+  border: 5px solid #96d953;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  max-width: 250px;
+  overflow-y: auto;
+  font-size: 14px;
+  z-index: 1000;
+  max-height: 50%;
+  overflow-y: scroll;
+}
+.directions-info-pane h4 {
+  margin: 0 0 10px;
+}
+.directions-info-pane ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.directions-info-pane li {
+  margin-bottom: 5px;
+}
+
+.input:not(:focus, :hover) {
+  .suggestions {
+    visibility: hidden;
+  }
+}
+
+.suggestions {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #e1d7d7;
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+  max-height: 150px;
+  overflow-y: auto;
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  z-index: 1000;
+}
+
+.suggestions li {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #e1d7d7;
+}
+
+.suggestions li:hover {
+  background-color: #f2f2f2;
 }
 
 .flex-justify-center {
@@ -78,12 +148,15 @@ code {
 }
 
 .map {
-  width: 66.666%;
+  width: 66.5%;
+  height: 5%;
 }
 
 .leaflet-container {
   width: auto;
+  height: auto;
   border-left: 2px solid#96d953;
+  z-index: 1;
 }
 
 button a {
@@ -114,9 +187,12 @@ button a {
 
 .input:focus {
   border-radius: 10px;
-  width: 50%;
+  width: 60%;
   border-color: #e8e8e6;
   outline: none;
+}
+.input:hover:not(:focus) {
+  border-color: #cac1b9;
 }
 
 form {
@@ -192,4 +268,85 @@ img.logo:hover {
   margin-top: 0px;
   margin-bottom: 5px;
   border: 3px solid #96d953;
+}
+
+.X {
+  padding: 5px 10px;
+  margin: 20px 0px 0px 20px;
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  body,
+  html {
+    text-align: center;
+  }
+
+  .aside-home-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+  }
+
+  .home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .X {
+    max-width: 20%;
+  }
+
+  .invisible {
+    visibility: hidden;
+  }
+
+  .home-page-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 60%;
+    height: auto;
+  }
+
+  .map {
+    width: 99%;
+    height: auto;
+  }
+
+  .side-js {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  p,
+  .Button,
+  label {
+    font-size: 1.2em;
+    padding: 0 10px;
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 1.9em;
+  }
+
+  .Button {
+    width: 80%;
+    margin: 20px 20px;
+    padding: 10px;
+  }
+
+  .directions-mini-pane {
+    margin: 20px auto;
+    width: 90%;
+    text-align: center;
+  }
 }
