@@ -3,18 +3,38 @@ import React from "react"
 const DirectionsInfoPane = ({ directions }) => {
   return (
     <div className="directions-info-pane">
-      <h4>Directions</h4>
-      {directions && directions.length > 0 ? (
-        <ul>
-          {directions.map((step, index) => (
+      <div>
+        <h3>
+          <bold>Top Routes</bold>
+        </h3>
+        {directions && directions.length > 0 ? (
+          directions.map((route, index) => (
+            <div key={index}>
+              <h4>Route {index + 1}:</h4>
+              <p>
+                Time: {Math.round(route.time)} minutes Distance:{" "}
+                {route.distance.toFixed(2)} km
+              </p>
+            </div>
+          ))
+        ) : (
+          <p>No routes available</p>
+        )}
+      </div>
+      <div>
+        <h3>Directions</h3>
+        {directions && directions.length > 0 ? (
+          directions[0].instructions.map((step, index) => (
             <li key={index}>
-              {step.instruction} ({Math.round(step.distance)} meters)
+              <p>
+                {step.text} ({Math.round(step.distance)} meters)
+              </p>
             </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No directions available</p>
-      )}
+          ))
+        ) : (
+          <p>No directions available</p>
+        )}
+      </div>
     </div>
   )
 }

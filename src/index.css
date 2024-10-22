@@ -1,6 +1,9 @@
 body,
 html {
   margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: #f2f2f2;
   font-family: "Industry Test Book", sans-serif;
 }
 
@@ -69,14 +72,18 @@ code {
     monospace;
 }
 
+.flex-justify-center {
+  display: flex;
+  height: 91.25vh;
+}
+
 .aside-home-page {
   background-color: #f2f2f2;
   display: flex;
   float: left;
   width: 33.333%;
-  min-height: 20px;
-  max-height: inherit;
-  overflow-y: scroll;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .dropdown {
@@ -98,10 +105,34 @@ code {
   font-size: 14px;
   z-index: 1000;
   max-height: 50%;
-  overflow-y: scroll;
+  justify-content: space-between;
+  display: flex;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.directions-info-pane h3 {
+  margin: 20px;
+  padding: 5px;
+  margin-left: 1.75px;
+  margin-right: 15px;
+  border: 2px solid #96d953;
+  border-radius: 10px;
 }
 .directions-info-pane h4 {
-  margin: 0 0 10px;
+  margin: 20px;
+  padding: 5px;
+  margin-left: 1.75px;
+  margin-right: 15px;
+  border: 2px solid #63a422;
+  border-radius: 3px;
+}
+.directions-info-pane p {
+  margin: 20px;
+  padding: 5px;
+  margin-left: 1.75px;
+  margin-right: 15px;
+  border-bottom: 2px solid #96d953;
+  border-radius: 3px;
 }
 .directions-info-pane ul {
   list-style-type: none;
@@ -109,7 +140,7 @@ code {
   margin: 0;
 }
 .directions-info-pane li {
-  margin-bottom: 5px;
+  list-style-type: none;
 }
 
 .input:not(:focus, :hover) {
@@ -143,19 +174,15 @@ code {
   background-color: #f2f2f2;
 }
 
-.flex-justify-center {
-  display: flex;
-}
-
 .map {
-  width: 66.5%;
-  height: 5%;
+  width: 66.66%;
+  height: 100%;
 }
 
 .leaflet-container {
-  width: auto;
-  height: auto;
-  border-left: 2px solid#96d953;
+  border-top: 5px solid #7db446;
+  border-bottom: 6px solid #7db446;
+  border-radius: 15px;
   z-index: 1;
 }
 
@@ -316,7 +343,6 @@ img.logo:hover {
 
   .map {
     width: 99%;
-    height: auto;
   }
 
   .side-js {
