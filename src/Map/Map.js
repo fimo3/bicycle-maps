@@ -18,6 +18,9 @@ const Map = ({ startLocation, endLocation }) => {
   const startMarker = useRef(null)
   const endMarker = useRef(null)
   const [directions, setDirections] = useState([])
+  const [avgWeather, setAvgWeather] = useState({})
+  const [routeColors, setRouteColors] = useState([])
+  const [loading, setLoading] = useState(false) // State for loading screen
 
   useEffect(() => {
     if (!mapInstance.current && mapContainer.current) {
@@ -43,9 +46,65 @@ const Map = ({ startLocation, endLocation }) => {
     }
   }, [startLocation, endLocation])
 
+  const getWeatherData = async (coordinates) => {
+    const apiKey = "4e91fc4f3b4cc81c46e873bf2b5b7951"
+    const weatherPromises = coordinates.map(async (coord) => {
+      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${coord[1]}&lon=${coord[0]}&appid=${apiKey}&units=metric`
+      try {
+        const response = await fetch(url)
+        const data = await response.json()
+        if (data.main) {
+          return {
+            temperature: data.main.temp,
+            weather: data.weather[0].description,
+          }
+        } else {
+          console.error(
+            `No main data found for coordinates: ${coord[1]}, ${coord[0]}`
+          )
+          console.error("Error response:", data)
+          return null
+        }
+      } catch (error) {
+        console.error(
+          `Error fetching weather data for coordinates: ${coord[1]}, ${coord[0]}`,
+          error
+        )
+        return null
+      }
+    })
+
+    const weatherData = await Promise.all(weatherPromises)
+    const validWeatherData = weatherData.filter((data) => data !== null)
+
+    if (validWeatherData.length > 0) {
+      const avgTemp =
+        validWeatherData.reduce((sum, data) => sum + data.temperature, 0) /
+        validWeatherData.length
+      setAvgWeather({
+        temperature: avgTemp.toFixed(1),
+        description: validWeatherData[0].weather,
+      })
+    } else {
+      setAvgWeather({})
+    }
+  }
+
+  const getRandomColor = () => {
+    const red = Math.floor(Math.random() * 50)
+    const green = Math.floor(Math.random() * 100 + 100)
+    const blue = Math.floor(Math.random() * 50)
+
+    return `#${red.toString(16).padStart(2, "0")}${green
+      .toString(16)
+      .padStart(2, "0")}${blue.toString(16).padStart(2, "0")}`
+  }
+
   const getDirections = async (start, end) => {
     if (!start || !end)
       return console.error("Start or end location is missing.")
+
+    setLoading(true) // Show loading screen
 
     const apiKey = "6cd58b04-031e-426a-a662-0194bc11d2ee"
     const url = `https://graphhopper.com/api/1/route?point=${start[0]},${start[1]}&point=${end[0]},${end[1]}&vehicle=bike&locale=en&points_encoded=false&key=${apiKey}&algorithm=alternative_route&alternative_route.max_paths=5&alternative_route.min_paths=3&alternative_route.max_share_factor=0.5&alternative_route.max_weight_factor=2`
@@ -55,47 +114,47 @@ const Map = ({ startLocation, endLocation }) => {
       const data = await response.json()
 
       if (data.paths && data.paths.length > 0) {
-        setDirections(
-          data.paths.map((path) => ({
-            time: path.time / 60000, // convert ms to minutes
-            distance: path.distance / 1000, // convert meters to kilometers
+        const sortedPaths = data.paths.sort((a, b) => a.distance - b.distance)
+        const colors = []
+
+        const directionsData = sortedPaths.map((path, index) => {
+          const randomColor = getRandomColor()
+          colors.push(randomColor)
+
+          return {
+            time: path.time / 60000,
+            distance: path.distance / 1000,
             coordinates: path.points.coordinates.map((coord) => [
               coord[1],
               coord[0],
             ]),
             instructions: path.instructions,
-          }))
-        )
+            color: randomColor,
+          }
+        })
+
+        setDirections(directionsData)
+        setRouteColors(colors)
 
         routeLayers.current.forEach((layer) => layer.remove())
         routeLayers.current = []
 
-        data.paths.forEach((path, index) => {
-          const routeCoordinates = path.points.coordinates.map((coord) => [
-            coord[1],
-            coord[0],
-          ])
-          const getRandomColor = () => {
-            const letters = "0123456789ABCDEF"
-            let color = "#"
-            for (let i = 0; i < 6; i++) {
-              color += letters[Math.floor(Math.random() * 16)]
-            }
-            return color
-          }
-
-          const color =
-            index === 0 ? "#69d937" : index === 1 ? "green" : getRandomColor()
-          const routeLayer = L.polyline(routeCoordinates, {
-            color,
-            weight: 5,
-            opacity: 0.7,
+        directionsData.forEach((route, index) => {
+          const borderLayer = L.polyline(route.coordinates, {
+            color: "#000000",
+            weight: 11 - 1.5 * index,
+            opacity: 0.8,
           }).addTo(mapInstance.current)
 
-          routeLayers.current.push(routeLayer)
+          const routeLayer = L.polyline(route.coordinates, {
+            color: route.color,
+            weight: 9 - 1.5 * index,
+            opacity: (9 - index) / 10,
+          }).addTo(mapInstance.current)
+
+          routeLayers.current.push(borderLayer, routeLayer)
         })
 
-        // Add markers for start and end
         if (startMarker.current) startMarker.current.remove()
         if (endMarker.current) endMarker.current.remove()
 
@@ -109,23 +168,35 @@ const Map = ({ startLocation, endLocation }) => {
           .bindPopup("End Location")
           .openPopup()
 
-        // Fit map bounds to the route
-        const allCoordinates = data.paths.flatMap((path) =>
+        const allCoordinates = sortedPaths.flatMap((path) =>
           path.points.coordinates.map((coord) => [coord[1], coord[0]])
         )
         mapInstance.current.fitBounds(L.latLngBounds(allCoordinates))
+
+        getWeatherData(allCoordinates)
       } else {
         console.error("No route found in response")
       }
     } catch (error) {
       console.error("Error fetching route:", error)
     }
+
+    setLoading(false) // Hide loading screen
   }
 
   return (
     <div>
+      {loading && (
+        <div className="loading-overlay">
+          <div className="spinner" />
+        </div>
+      )}
       <div ref={mapContainer} style={{ height: "90vh", width: "100%" }} />
-      <DirectionsInfoPane directions={directions} />
+      <DirectionsInfoPane
+        directions={directions}
+        weatherData={avgWeather}
+        routeColors={routeColors}
+      />
     </div>
   )
 }

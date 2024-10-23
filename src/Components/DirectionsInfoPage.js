@@ -2,9 +2,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import CaloriesComponent from "./CaloriesComponent"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faClock, faRoad } from "@fortawesome/free-solid-svg-icons" // Import Font Awesome icons
+import { faClock, faRoad, faSun } from "@fortawesome/free-solid-svg-icons"
 
-const DirectionsInfoPane = ({ directions }) => {
+const DirectionsInfoPane = ({ directions, weatherData, routeColors }) => {
   return (
     <div className="directions-info-pane">
       <div className="routes-container">
@@ -13,16 +13,38 @@ const DirectionsInfoPane = ({ directions }) => {
         </h3>
         {directions && directions.length > 0 ? (
           directions.map((route, index) => (
-            <div key={index} className="routes-card">
+            <div
+              key={index}
+              className="routes-card"
+              style={{ backgroundColor: routeColors[index] }} // Use the color from the array
+            >
               <h4 className="route-title">Route {index + 1}:</h4>
-              <p className="route-info">
-                <FontAwesomeIcon icon={faClock} /> Time:{" "}
-                {Math.round(route.time)} minutes
-                <br />
-                <FontAwesomeIcon icon={faRoad} /> Distance:{" "}
-                {route.distance.toFixed(2)} km
-              </p>
-              <CaloriesComponent distance={route.distance} />
+              <div className="route-info">
+                <p>
+                  <FontAwesomeIcon icon={faClock} /> Time:{" "}
+                  {Math.round(route.time)} minutes
+                </p>
+                <p>
+                  <FontAwesomeIcon icon={faRoad} /> Distance:{" "}
+                  {route.distance.toFixed(2)} km
+                </p>
+              </div>
+              <div className="weather-info">
+                <p>
+                  <FontAwesomeIcon icon={faSun} /> Weather Information:
+                  <br />
+                  {weatherData.temperature && weatherData.description ? (
+                    <div>
+                      Temperature: {weatherData.temperature}°C
+                      <br />
+                      Description: {weatherData.description}
+                    </div>
+                  ) : (
+                    <div>No weather access at the moment.</div>
+                  )}
+                </p>
+                <CaloriesComponent distance={route.distance} />
+              </div>
             </div>
           ))
         ) : (
@@ -62,6 +84,11 @@ DirectionsInfoPane.propTypes = {
       ).isRequired,
     })
   ).isRequired,
+  weatherData: PropTypes.shape({
+    temperature: PropTypes.string,
+    description: PropTypes.string,
+  }),
+  routeColors: PropTypes.arrayOf(PropTypes.string).isRequired, // Add prop type for routeColors
 }
 
 export default DirectionsInfoPane

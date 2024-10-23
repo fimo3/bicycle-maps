@@ -22,26 +22,15 @@ const CaloriesComponent = ({ distance }) => {
   }, [distance])
 
   return (
-    <div className="calories-component">
-      <h4 className="calories-title">
-        <strong>Calories Information</strong>
-      </h4>
-      <div className="calories-info">
-        <p>
-          <div className="calories-burned">
-            <FontAwesomeIcon icon={faFire} className="icon fire-icon" />
-            <span className="calories-text">
-              <strong> {calories.toFixed(2)} cal</strong> burned
-            </span>
-          </div>
-          <div className="burger-equivalent">
-            <FontAwesomeIcon icon={faHamburger} className="icon burger-icon" />
-            <span className="calories-text">
-              <strong> {burgers.toFixed(2)}</strong> burgers equivalent
-            </span>
-          </div>
-        </p>
-      </div>
+    <div>
+      <p>
+        <FontAwesomeIcon icon={faFire} />
+        {calories.toFixed(2)} cal burned
+      </p>
+      <p>
+        <FontAwesomeIcon icon={faHamburger} />
+        {burgers.toFixed(2)} burgers equivalent
+      </p>
     </div>
   )
 }
