@@ -109,27 +109,37 @@ code {
   overflow-y: auto;
   overflow-x: hidden;
 }
-/* In your CSS file or within a CSS-in-JS solution */
-.loading-overlay {
+
+.custom-spinner-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5); /* Dim effect */
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dims the screen */
   display: flex;
-  align-items: center;
   justify-content: center;
-  z-index: 1000; /* Ensure it's above all other elements */
+  align-items: center;
+  z-index: 9999;
 }
-
-.spinner {
-  border: 8px solid rgba(255, 255, 255, 0.3);
-  border-top: 8px solid #ffffff;
+.switcher {
+  display: flex;
+  background-color: #cac1b9;
+  border-radius: 15px;
+  align-content: space-evenly;
+  border: 3px solid #e1d7d7;
+  width: 75%;
+}
+.custom-spinner {
+  width: 50px;
+  height: 50px;
+  border: 15px solid #cac1b9;
+  border-top: 5px solid #96d953;
+  border-bottom: 20px solid #96d953;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: spin 1s linear infinite;
+  border-top-right-radius: 15%;
+  border-bottom-left-radius: 5%;
+  animation: spin 0.9s linear infinite;
 }
 
 @keyframes spin {

@@ -3,10 +3,30 @@ import PropTypes from "prop-types"
 import CaloriesComponent from "./CaloriesComponent"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock, faRoad, faSun } from "@fortawesome/free-solid-svg-icons"
+import { faBicycle, faWalking } from "@fortawesome/free-solid-svg-icons" // Import icons for modes
+import Button from "../Components/Button"
 
-const DirectionsInfoPane = ({ directions, weatherData, routeColors }) => {
+const DirectionsInfoPane = ({
+  directions,
+  weatherData,
+  routeColors,
+  mode,
+  setMode,
+}) => {
   return (
     <div className="directions-info-pane">
+      {/* Mode Switcher */}
+      <div className="switcher">
+        <Button
+          onClick={() => setMode("foot")}
+          content={<FontAwesomeIcon icon={faWalking} />}
+        />
+        <Button
+          onClick={() => setMode("cycle")}
+          content={<FontAwesomeIcon icon={faBicycle} />}
+        />
+      </div>
+
       <div className="routes-container">
         <h3 className="routes-title">
           <strong>Top Routes</strong>
@@ -89,6 +109,8 @@ DirectionsInfoPane.propTypes = {
     description: PropTypes.string,
   }),
   routeColors: PropTypes.arrayOf(PropTypes.string).isRequired, // Add prop type for routeColors
+  mode: PropTypes.string.isRequired, // Add prop type for mode
+  setMode: PropTypes.func.isRequired, // Add prop type for setMode
 }
 
 export default DirectionsInfoPane

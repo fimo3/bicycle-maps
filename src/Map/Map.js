@@ -3,6 +3,7 @@ import L from "leaflet"
 import "leaflet/dist/leaflet.css"
 import pin from "../images/pin.png"
 import DirectionsInfoPane from "../Components/DirectionsInfoPage"
+import SpinnerComponent from "../Components/SpinnerComponent"
 
 const customIcon = new L.Icon({
   iconUrl: pin,
@@ -12,7 +13,10 @@ const customIcon = new L.Icon({
 })
 
 const Map = ({ startLocation, endLocation }) => {
+  const [mode, setMode] = useState("cycle") // Default mode is cycle
   const mapContainer = useRef(null)
+
+  const [loading, setLoading] = useState(false) // State for loading
   const mapInstance = useRef(null)
   const routeLayers = useRef([])
   const startMarker = useRef(null)
@@ -20,7 +24,6 @@ const Map = ({ startLocation, endLocation }) => {
   const [directions, setDirections] = useState([])
   const [avgWeather, setAvgWeather] = useState({})
   const [routeColors, setRouteColors] = useState([])
-  const [loading, setLoading] = useState(false) // State for loading screen
 
   useEffect(() => {
     if (!mapInstance.current && mapContainer.current) {
@@ -44,7 +47,7 @@ const Map = ({ startLocation, endLocation }) => {
         mapInstance.current = null
       }
     }
-  }, [startLocation, endLocation])
+  }, [startLocation, endLocation, mode])
 
   const getWeatherData = async (coordinates) => {
     const apiKey = "4e91fc4f3b4cc81c46e873bf2b5b7951"
@@ -62,7 +65,6 @@ const Map = ({ startLocation, endLocation }) => {
           console.error(
             `No main data found for coordinates: ${coord[1]}, ${coord[0]}`
           )
-          console.error("Error response:", data)
           return null
         }
       } catch (error) {
@@ -92,7 +94,7 @@ const Map = ({ startLocation, endLocation }) => {
 
   const getRandomColor = () => {
     const red = Math.floor(Math.random() * 50)
-    const green = Math.floor(Math.random() * 100 + 100)
+    const green = Math.floor(Math.random() * 256)
     const blue = Math.floor(Math.random() * 50)
 
     return `#${red.toString(16).padStart(2, "0")}${green
@@ -104,10 +106,16 @@ const Map = ({ startLocation, endLocation }) => {
     if (!start || !end)
       return console.error("Start or end location is missing.")
 
-    setLoading(true) // Show loading screen
-
     const apiKey = "6cd58b04-031e-426a-a662-0194bc11d2ee"
-    const url = `https://graphhopper.com/api/1/route?point=${start[0]},${start[1]}&point=${end[0]},${end[1]}&vehicle=bike&locale=en&points_encoded=false&key=${apiKey}&algorithm=alternative_route&alternative_route.max_paths=5&alternative_route.min_paths=3&alternative_route.max_share_factor=0.5&alternative_route.max_weight_factor=2`
+    let url
+    setLoading(true)
+
+    // Set different URLs based on the mode
+    if (mode === "cycle") {
+      url = `https://graphhopper.com/api/1/route?point=${start[0]},${start[1]}&point=${end[0]},${end[1]}&vehicle=bike&locale=en&points_encoded=false&key=${apiKey}&algorithm=alternative_route&alternative_route.max_paths=5&alternative_route.min_paths=3&alternative_route.max_share_factor=0.5&alternative_route.max_weight_factor=2`
+    } else if (mode === "foot") {
+      url = `https://graphhopper.com/api/1/route?point=${start[0]},${start[1]}&point=${end[0]},${end[1]}&vehicle=foot&locale=en&points_encoded=false&key=${apiKey}&algorithm=alternative_route&alternative_route.max_paths=5&alternative_route.min_paths=3&alternative_route.max_share_factor=0.5&alternative_route.max_weight_factor=2`
+    }
 
     try {
       const response = await fetch(url)
@@ -179,23 +187,25 @@ const Map = ({ startLocation, endLocation }) => {
       }
     } catch (error) {
       console.error("Error fetching route:", error)
+    } finally {
+      setLoading(false)
     }
-
-    setLoading(false) // Hide loading screen
   }
 
   return (
     <div>
-      {loading && (
-        <div className="loading-overlay">
-          <div className="spinner" />
-        </div>
-      )}
+      {loading && <SpinnerComponent />}
+
+      {/* Map Container */}
       <div ref={mapContainer} style={{ height: "90vh", width: "100%" }} />
+
+      {/* Directions Info Pane */}
       <DirectionsInfoPane
         directions={directions}
         weatherData={avgWeather}
         routeColors={routeColors}
+        mode={mode}
+        setMode={setMode} // Pass setMode here
       />
     </div>
   )
