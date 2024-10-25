@@ -1,6 +1,13 @@
 import React, { useState } from "react"
 
-const Input = ({ type, placeholder, value, onChange, suggestions }) => {
+const Input = ({
+  type,
+  placeholder,
+  value,
+  onChange,
+  suggestions = [],
+  icon,
+}) => {
   const [filteredSuggestions, setFilteredSuggestions] = useState([])
   const [showSuggestions, setShowSuggestions] = useState(false)
 
@@ -8,12 +15,17 @@ const Input = ({ type, placeholder, value, onChange, suggestions }) => {
     const inputValue = event.target.value
     onChange(event)
 
-    const filtered = suggestions.filter((suggestion) =>
-      suggestion.toLowerCase().includes(inputValue.toLowerCase())
-    )
+    // Only filter suggestions if they are provided
+    if (suggestions.length > 0) {
+      const filtered = suggestions.filter((suggestion) =>
+        suggestion.toLowerCase().includes(inputValue.toLowerCase())
+      )
 
-    setFilteredSuggestions(filtered)
-    setShowSuggestions(true)
+      setFilteredSuggestions(filtered)
+      setShowSuggestions(true)
+    } else {
+      setShowSuggestions(false) // Hide suggestions if none are provided
+    }
   }
 
   const handleSuggestionClick = (suggestion) => {
@@ -24,6 +36,7 @@ const Input = ({ type, placeholder, value, onChange, suggestions }) => {
   return (
     <div>
       <div className="dropdown">
+        {icon && <span className="input-icon">{icon}</span>}
         <input
           type={type}
           placeholder={placeholder}

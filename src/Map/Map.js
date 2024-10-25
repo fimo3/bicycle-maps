@@ -13,10 +13,10 @@ const customIcon = new L.Icon({
 })
 
 const Map = ({ startLocation, endLocation }) => {
-  const [mode, setMode] = useState("cycle") // Default mode is cycle
+  const [mode, setMode] = useState("cycle")
   const mapContainer = useRef(null)
 
-  const [loading, setLoading] = useState(false) // State for loading
+  const [loading, setLoading] = useState(false)
   const mapInstance = useRef(null)
   const routeLayers = useRef([])
   const startMarker = useRef(null)

@@ -7,8 +7,8 @@ const CaloriesComponent = ({ distance }) => {
   const [burgers, setBurgers] = useState(0)
 
   const calculateCaloriesAndBurgers = () => {
-    const burnRatePerKm = 45 // Calories burned per kilometer
-    const caloriesPerBurger = 300 // Calories per burger
+    const burnRatePerKm = 45
+    const caloriesPerBurger = 300
 
     const totalCalories = distance * burnRatePerKm
     const burgerEquivalent = totalCalories / caloriesPerBurger

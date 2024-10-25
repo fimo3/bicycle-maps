@@ -122,6 +122,18 @@ code {
   align-items: center;
   z-index: 9999;
 }
+
+.log-form {
+  margin: 15px;
+  padding: 1% 2%;
+  border-radius: 15px;
+  background-color: #63a422;
+  border: 3px solid #96d953;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .switcher {
   display: flex;
   background-color: #cac1b9;
@@ -261,6 +273,12 @@ button a {
   padding: 10px;
   transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out,
     border-color 0.2s ease-in-out;
+}
+
+.profile-page {
+  background-color: #7db446;
+  border-radius: 30px;
+  border: 3px solid #96d953;
 }
 
 .input:focus {
