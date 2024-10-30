@@ -12,13 +12,10 @@ const Login = () => {
   const { login } = useContext(AuthContext)
   const navigate = useNavigate()
 
-  const handleLogin = () => {
-    if (username === "admin" && password === "admin_password123") {
-      login()
-      navigate("/protected")
-    } else {
-      alert("Invalid credentials")
-    }
+  const handleLogin = (e) => {
+    e.preventDefault()
+    login(username, password)
+    navigate("/profile")
   }
 
   return (
@@ -33,34 +30,37 @@ const Login = () => {
           icon={faBicycle}
         />
       </h1>
-      <Input
-        type="text"
-        placeholder="Username"
-        icon={
-          <FontAwesomeIcon
-            style={{
-              color: "#69d935",
-              paddingRight: 10,
-            }}
-            icon={faUserAlt}
-          />
-        }
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <Input
-        type="password"
-        placeholder="Password"
-        icon={
-          <FontAwesomeIcon
-            style={{ color: "#69d935", paddingRight: 10 }}
-            icon={faLock}
-          />
-        }
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <Button onClick={handleLogin} content={"Log in"} />
+      <form onSubmit={handleLogin}>
+        <Input
+          type="text"
+          placeholder="Enter username..."
+          icon={
+            <FontAwesomeIcon
+              style={{
+                color: "#69d935",
+                paddingRight: 10,
+              }}
+              icon={faUserAlt}
+            />
+          }
+          value={username}
+          required
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <Input
+          type="password"
+          placeholder="Enter password..."
+          icon={
+            <FontAwesomeIcon
+              style={{ color: "#69d935", paddingRight: 10 }}
+              icon={faLock}
+            />
+          }
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <Button type="submit" content={"Log in"} />
+      </form>
     </div>
   )
 }

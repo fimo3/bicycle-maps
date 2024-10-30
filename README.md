@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# **Онлайн приложение за велосипеди и пешеходци SAFCYCLE**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## **Описание на проекта**
 
-## Available Scripts
+Това е онлайн приложение, предназначено за велосипедисти и пешеходци, което предлага маршрути, базирани на разстояние, време и метеорологични условия. Приложението предоставя подробна карта с възможности за избор на най-добрия маршрут, като се вземат предвид фактори като време, асфалтови пътища и сезонни условия.
 
-In the project directory, you can run:
+## **Основни функционалности**
 
-### `npm start`
+- **Избор на маршрути** въз основа на разстояние, време и метеорологични условия.
+- **Превключване между режим на ходене и колоездене.**
+- **Изчисляване на изгорени калории** и еквивалент в "бургери".
+- **Поддръжка на тъмна и светла тема.**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## **Използвани технологии**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Frontend**: React.js, CSS
+- **Картографиране**: Leaflet
+- **API услуги**: GraphHopper API (маршрутизация), OpenWeather API (метеорологични данни)
+- **Икони**: Font Awesome
 
-### `npm test`
+## **Инсталация и стартиране**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+За да стартирате проекта на локална машина, следвайте следните стъпки:
 
-### `npm run build`
+1. Инсталирайте необходимите зависимости:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```bash
+   npm install
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Стартирайте приложението:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   npm start
+   ```
 
-### `npm run eject`
+3. Отворете http://localhost:3000, за да видите приложението в браузъра си.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Използване на приложението
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- В основното меню на приложението, потребителите могат да избират между различни режими на колоездене и ходене.
+- При въвеждане на начална и крайна точка, приложението ще предложи най-добрите маршрути.
+- Възможност за разглеждане на алтернативни маршрути и визуализация на времето по време на пътуването.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Калории и еквивалент в бургери
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Приложението разполага с компонент за калории, който показва изгорените калории и техния еквивалент в "бургери". Това е представено чрез следните формули:
 
-## Learn More
+- Изгаряне на калории на км: 45 калории
+- Калории на един бургер: 300 калории
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Поддръжка и бъдещи подобрения
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+В бъдеще приложението ще бъде разширено с функции като:
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Запаване на любими маршрути.
+- Добавяне на различни обекти от потребителите.
+- Замърсеност на въздуха.
+- История на маршрутите и проследяване на изминатите разстояния.
+- Система за оценяване на маршрутите от потребителите.
