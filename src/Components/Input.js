@@ -15,7 +15,6 @@ const Input = ({
     const inputValue = event.target.value
     onChange(event)
 
-    // Only filter suggestions if they are provided
     if (suggestions.length > 0) {
       const filtered = suggestions.filter((suggestion) =>
         suggestion.toLowerCase().includes(inputValue.toLowerCase())
@@ -24,7 +23,7 @@ const Input = ({
       setFilteredSuggestions(filtered)
       setShowSuggestions(true)
     } else {
-      setShowSuggestions(false) // Hide suggestions if none are provided
+      setShowSuggestions(false)
     }
   }
 

@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import Input from "../Components/Input"
+import Input from "./Input"
 import Button from "./Button"
 
-const DirectionsMiniPane = ({ onSubmit }) => {
+const RoutePane = ({ onSubmit }) => {
   const [startLocation, setStartLocation] = useState("")
   const [endLocation, setEndLocation] = useState("")
   const [startSuggestions, setStartSuggestions] = useState([])
@@ -110,7 +110,6 @@ const DirectionsMiniPane = ({ onSubmit }) => {
 
   return (
     <div>
-      <h3>Route</h3>
       <form onSubmit={handleSubmit}>
         <label>Start location: </label>
         <Input
@@ -123,10 +122,10 @@ const DirectionsMiniPane = ({ onSubmit }) => {
               setStartSuggestions
             )
           }
+          className="route-input"
           placeholder="e.g. Your location"
           suggestions={startSuggestions.map((suggestion) => suggestion.name)}
         />
-        <hr />
         <label>End location: </label>
         <Input
           type="text"
@@ -134,18 +133,18 @@ const DirectionsMiniPane = ({ onSubmit }) => {
           onChange={(e) =>
             handleInputChange(e.target.value, setEndLocation, setEndSuggestions)
           }
+          className="route-input"
           placeholder="e.g. 'Milin Kamak' №34 road..."
           suggestions={endSuggestions.map((suggestion) => suggestion.name)}
         />
-        <hr />
         <Button
           type="submit"
           content="Find route"
-          styling="Directions-button-submit"
+          styling="button-submit"
         />
       </form>
     </div>
   )
 }
 
-export default DirectionsMiniPane
+export default RoutePane
