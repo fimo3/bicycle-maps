@@ -29,7 +29,7 @@ const Home = ({ onSubmit }) => {
       )}
       {isOpen && (
         <div className="route-pane">
-          <div className="center">
+          <div className="sides">
             <h3 className="route-h3" >Route</h3>
             <XButton href="#" onClick={handleClose} />
           </div>

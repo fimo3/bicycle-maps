@@ -61,12 +61,16 @@ h4 {
   padding-left: 20px;
   font-size: 1.5em;
 }
-
+.SAFCycle-nav-title {
+  font-family: 'Industry Test Ultra';
+  color: #f2f2f2;
+  font-size:23px;
+}
 form {
   align-items: center;
   justify-content: center;
-  display: flex-row;
-  padding: 0px 20px 10px 20px;
+  padding-right:40px;
+  padding-left:20px;
 }
 
 label {
@@ -99,23 +103,22 @@ code {
 .route-input {
   margin-bottom:20px;
   margin-top:20px;
-
 }
 
-    /* dropdown params*/
+/* dropdown params*/
 
-    .dropdown {
-      position: relative;
-      width: 90%;
-    }
-    /*suggestion params*/
+.dropdown {
+  position: relative;
+  width: 90%;
+}
+/*suggestion params*/
 
-    .suggestions li {
-      padding: 10px;
-      cursor: pointer;
-    }
+.suggestions li {
+  padding: 10px;
+  cursor: pointer;
+}
     
-    /* the switcher for the bicycle to human route conversion *switching noises* */
+/* the switcher for the bicycle to human route conversion *switching noises* */
 
 .switcher {
   display:flex;    
@@ -131,7 +134,11 @@ code {
 .padding-left-12px {
   padding-left: 13px;
 }
-
+.sides {
+  display:flex;
+  justify-content: space-between;
+  padding-right: 25px;
+}
 .center {
   display:flex;
   justify-content:space-around;
@@ -146,10 +153,9 @@ code {
   margin: 0;
   margin-top: 10px;
   margin-bottom: 5px;
-  margin-left: 0px;
-
+  padding:0px;
+  width:100%;
 }
-
 /*directions-info-pane */
 
 .directions-info-pane h3 {
@@ -280,7 +286,6 @@ h2.userinfo {
   label {
     font-size: 1.2em;
     padding: 0 10px;
-    margin: 10px 0;
     text-align: center;
   }
 
@@ -290,7 +295,6 @@ h2.userinfo {
 
   .Button {
     width: 80%;
-    margin: 20px 20px;
     padding: 10px;
   }
 
@@ -443,8 +447,11 @@ h2.userinfo {
     color: black;
     width: 100%;
     border-radius: 5px;
-    padding-top: 15px;
-    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
     border:none;
     transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
   }
@@ -484,7 +491,6 @@ h2.userinfo {
     color: #f2f2f2;
     border: none;
     cursor: pointer;
-    margin-left: 20px;
     padding-top: 3px;
     padding-bottom: 3px;
     padding-left: 25%;

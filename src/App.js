@@ -52,6 +52,9 @@ export default function App() {
               <div>
                 <ul className="navul">
                   <li>
+                    <p className="SAFCycle-nav-title">SAFCycle</p>
+                  </li>
+                  <li>
                     <Link to="/">
                       <p>Home</p>
                     </Link>
