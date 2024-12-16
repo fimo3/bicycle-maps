@@ -18,14 +18,14 @@ const Home = ({ onSubmit }) => {
     <div className="home">
       {!isOpen && (
         <>
-          <div>
+          <div className="flex">
+              <h1>Welcome to SAFCycle!</h1>
             <img src={logo} alt="Logo" width="100" className="logo" />
-            <h1>Welcome to SAFCycle!</h1>
-            <p>Your ultimate guide for navigating bike paths and routes.</p>
-            <p>Explore the map to find the best biking routes around you!</p>
-          </div>
-          <Button href="#" content="Let's go >>" onClick={handleOpen} />
-        </>
+          </div><p>Your ultimate guide for navigating bike paths and routes.</p>
+          <p>Explore the map to find the best biking routes around you!</p><div className="p-l-20">
+              
+          <Button href="#" content="Let's go >>" onClick={handleOpen} styling="Lets-go"/>
+          </div></>
       )}
       {isOpen && (
         <div className="route-pane">

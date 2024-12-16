@@ -9,7 +9,9 @@ html {
   background-color: #f2f2f2;
   font-family: "Industry Test Book", sans-serif;
 }
-
+.App {
+  height: 100vh;
+}
 .home {
   width:100%;
 }
@@ -69,7 +71,6 @@ h4 {
 form {
   align-items: center;
   justify-content: center;
-  padding-right:40px;
   padding-left:20px;
 }
 
@@ -121,9 +122,18 @@ code {
 /* the switcher for the bicycle to human route conversion *switching noises* */
 
 .switcher {
-  display:flex;    
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.switcher .Button {
+  padding: 5px 5px;
+}
+.switcher .Button:last-child {
+  margin-right: 25px;
 }
 /*route card end*/
+
 /*basic parameters*/
 
 .flex-justify-center {
@@ -144,9 +154,21 @@ code {
   justify-content:space-around;
   align-items: center;
 }
+.align-center {
+  align-items: center;
+  justify-content: center;
+}
 .flex {
   display: flex;
   align-items: center;
+}
+.p-l-20{
+  padding-left:20px;
+}
+
+.Lets-go {
+  width:90%;
+  padding-left:20px;
 }
 /* buttons buttons and more buttons!!! */
 .button-submit {
@@ -154,7 +176,7 @@ code {
   margin-top: 10px;
   margin-bottom: 5px;
   padding:0px;
-  width:100%;
+  width:92.5%;
 }
 /*directions-info-pane */
 
@@ -186,6 +208,42 @@ code {
 }
 
 /* end of directions-info-pane */
+/*brand-logo*/
+.brandlogos {
+  display: flex;
+  justify-content:start;
+  align-items: center;
+}
+.brandlogo-email {
+  color:white;
+  margin-left: 15px;
+  background-color: #e40000;
+  border-radius: 50%;
+  padding-top:5px;
+  padding-left: 7.5px;
+  padding-bottom:5px;
+  padding-right: 7.5px;
+}
+.brandlogo-instagram {
+  color:white;
+  margin-left: 15px;
+  background-color: #de0089;
+  border-radius: 50%;
+  padding-top:5px;
+  padding-left: 7.5px;
+  padding-bottom:5px;
+  padding-right: 7.5px;
+}
+.brandlogo-phone {
+  color:white;
+  margin-left: 15px;
+  background-color: #96d953;
+  border-radius: 50%;
+  padding-top:5px;
+  padding-left: 7.5px;
+  padding-bottom:5px;
+  padding-right: 7.5px;
+}
 /*<map>*/
 .map {
   width: 66.66%;
@@ -312,6 +370,7 @@ h2.userinfo {
 /*light mode settings */
 
 .light-mode {
+  background-color: #f2f2f2;
   transition: color 0.9s;
   nav {
     background-color: #96d953;
@@ -516,7 +575,7 @@ h2.userinfo {
   img.logo {
     margin-top: 10px;
     border-radius: 20%;
-    margin-left: 10px;
+    margin-right: 10%;
     box-shadow: 0px 0px 0px #000000a3;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
@@ -528,8 +587,9 @@ h2.userinfo {
 
   .X {
     padding: 5px 10px;
-    margin: 20px 0px 0px 20px;
-    border-radius: 50%;
+    margin-top: 35px;
+    margin-right: 15px;
+    border-radius: 10%;
     background-color: #df4444;
   }
 
@@ -546,6 +606,7 @@ h2.userinfo {
 }
 /* dark-mode*/
 .dark {
+  background-color: #2e2e2e;
   transition: color 0.9s;
   nav {
     background-color: #2e5e2f;

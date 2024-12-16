@@ -13,7 +13,7 @@ import Profile from "./Components/Profile" // Import the Profile component
 import { AuthContext } from "./Components/AuthProvider"
 import Button from "./Components/Button"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMoon, faSignOut, faSun } from "@fortawesome/free-solid-svg-icons"
+import { faHome, faMoon, faSignOut, faSun } from "@fortawesome/free-solid-svg-icons"
 import avatar from "./images/avatar.png"
 
 export default function App() {
@@ -52,11 +52,9 @@ export default function App() {
               <div>
                 <ul className="navul">
                   <li>
-                    <p className="SAFCycle-nav-title">SAFCycle</p>
-                  </li>
-                  <li>
                     <Link to="/">
-                      <p>Home</p>
+                      <p className="SAFCycle-nav-title">
+                      <FontAwesomeIcon style={{color:"#f2f2f2"}} icon={faHome}/> SAFCycle</p>
                     </Link>
                   </li>
                   <li>

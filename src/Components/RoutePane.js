@@ -122,7 +122,7 @@ const RoutePane = ({ onSubmit }) => {
               setStartSuggestions
             )
           }
-          className="route-input"
+          styling="route-input"
           placeholder="e.g. Your location"
           suggestions={startSuggestions.map((suggestion) => suggestion.name)}
         />
@@ -133,7 +133,7 @@ const RoutePane = ({ onSubmit }) => {
           onChange={(e) =>
             handleInputChange(e.target.value, setEndLocation, setEndSuggestions)
           }
-          className="route-input"
+          styling="route-input"
           placeholder="e.g. 'Milin Kamak' №34 road..."
           suggestions={endSuggestions.map((suggestion) => suggestion.name)}
         />

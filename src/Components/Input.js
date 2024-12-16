@@ -7,6 +7,7 @@ const Input = ({
   onChange,
   suggestions = [],
   icon,
+  styling
 }) => {
   const [filteredSuggestions, setFilteredSuggestions] = useState([])
   const [showSuggestions, setShowSuggestions] = useState(false)
@@ -41,7 +42,7 @@ const Input = ({
           placeholder={placeholder}
           value={value}
           onChange={handleInputChange}
-          className="input"
+          className={`input ${styling}`}
         />
         {showSuggestions && filteredSuggestions.length > 0 && (
           <ul className="suggestions">

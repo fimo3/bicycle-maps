@@ -93,10 +93,12 @@ const Map = ({ startLocation, endLocation }) => {
   }
 
   const getRandomColor = () => {
-    const red = Math.floor(Math.random() * 50)
-    const green = Math.floor(Math.random() * 256)
-    const blue = Math.floor(Math.random() * 50)
-
+    let red, green, blue = 0;
+    while(!(red+green+blue >=100)){
+      red = Math.floor(Math.random() * 50)
+      green = Math.floor(Math.random() * 256)
+      blue = Math.floor(Math.random() * 50)
+    }
     return `#${red.toString(16).padStart(2, "0")}${green
       .toString(16)
       .padStart(2, "0")}${blue.toString(16).padStart(2, "0")}`

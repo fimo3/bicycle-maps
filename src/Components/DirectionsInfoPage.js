@@ -10,12 +10,10 @@ const DirectionsInfoPane = ({
   directions,
   weatherData,
   routeColors,
-  mode,
   setMode,
 }) => {
   return (
     <div className="directions-info-pane">
-      {/* Mode Switcher */}
       <div className="switcher">
         <Button
           onClick={() => setMode("foot")}
@@ -108,9 +106,9 @@ DirectionsInfoPane.propTypes = {
     temperature: PropTypes.string,
     description: PropTypes.string,
   }),
-  routeColors: PropTypes.arrayOf(PropTypes.string).isRequired, // Add prop type for routeColors
-  mode: PropTypes.string.isRequired, // Add prop type for mode
-  setMode: PropTypes.func.isRequired, // Add prop type for setMode
+  routeColors: PropTypes.arrayOf(PropTypes.string).isRequired,
+  mode: PropTypes.string.isRequired,
+  setMode: PropTypes.func.isRequired,
 }
 
 export default DirectionsInfoPane
