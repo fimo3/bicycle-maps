@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import CaloriesComponent from "./CaloriesComponent"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock, faRoad, faSun } from "@fortawesome/free-solid-svg-icons"
-import { faBicycle, faWalking } from "@fortawesome/free-solid-svg-icons" // Import icons for modes
+import { faBicycle, faWalking } from "@fortawesome/free-solid-svg-icons"
 import Button from "../Components/Button"
 
 const DirectionsInfoPane = ({
@@ -34,7 +34,7 @@ const DirectionsInfoPane = ({
             <div
               key={index}
               className="routes-card"
-              style={{ backgroundColor: routeColors[index] }} // Use the color from the array
+              style={{ backgroundColor: routeColors[index] }}
             >
               <h4 className="route-title">Route {index + 1}:</h4>
               <div className="route-info">
@@ -76,7 +76,7 @@ const DirectionsInfoPane = ({
             {directions[0].instructions.map((step, index) => (
               <li key={index} className="direction-step">
                 <p>
-                  {step.text} ({Math.round(step.distance)} meters)
+                  {step.text}{index<(directions[0].instructions.length-1)?" ("+Math.round(step.distance)+" meters)":"."}
                 </p>
               </li>
             ))}

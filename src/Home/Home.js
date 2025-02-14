@@ -18,19 +18,26 @@ const Home = ({ onSubmit }) => {
     <div className="home">
       {!isOpen && (
         <>
-          <div className="flex">
-              <h1>Welcome to SAFCycle!</h1>
+          <div className="">
+            <h1>Welcome to SAFCycle!</h1>
             <img src={logo} alt="Logo" width="100" className="logo" />
-          </div><p>Your ultimate guide for navigating bike paths and routes.</p>
-          <p>Explore the map to find the best biking routes around you!</p><div className="p-l-20">
-              
-          <Button href="#" content="Let's go >>" onClick={handleOpen} styling="Lets-go"/>
-          </div></>
+          </div>
+          <p>Your ultimate guide for navigating bike paths and routes.</p>
+          <p>Explore the map to find the best biking routes around you!</p>
+          <div className="">
+            <Button
+              href="#"
+              content="Let's go >>"
+              onClick={handleOpen}
+              styling="Lets-go"
+            />
+          </div>
+        </>
       )}
       {isOpen && (
         <div className="route-pane">
           <div className="sides">
-            <h3 className="route-h3" >Route</h3>
+            <h3 className="route-h3">Route</h3>
             <XButton href="#" onClick={handleClose} />
           </div>
           <RoutePane onSubmit={onSubmit} />

@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom"
 import { AuthContext } from "./AuthProvider"
 import Input from "./Input"
 import Button from "./Button"
-import { faBicycle, faLock, faUserAlt } from "@fortawesome/free-solid-svg-icons"
+import { faBicycle } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import greencity from "../images/green_city.jpg"
 
 const Login = () => {
   const [username, setUsername] = useState("")
@@ -19,48 +20,35 @@ const Login = () => {
   }
 
   return (
-    <div className="log-form">
-      <h1>
-        Login
-        <FontAwesomeIcon
-          style={{
-            color: "#69d952",
-            paddingLeft: 15,
-          }}
-          icon={faBicycle}
-        />
-      </h1>
-      <form onSubmit={handleLogin}>
-        <Input
-          type="text"
-          placeholder="Enter username..."
-          icon={
-            <FontAwesomeIcon
-              style={{
-                color: "#69d935",
-                paddingRight: 10,
-              }}
-              icon={faUserAlt}
-            />
-          }
-          value={username}
-          required
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <Input
-          type="password"
-          placeholder="Enter password..."
-          icon={
-            <FontAwesomeIcon
-              style={{ color: "#69d935", paddingRight: 10 }}
-              icon={faLock}
-            />
-          }
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <Button type="submit" content={"Log in"} />
-      </form>
+    <div className="grid-cols-2">
+      <div className="log-form">
+        <h1>
+          Login
+          <FontAwesomeIcon
+            style={{
+              color: "#69d952",
+              paddingLeft: 15,
+            }}
+            icon={faBicycle}
+          />
+        </h1>
+        <form onSubmit={handleLogin}>
+          <Input
+            type="text"
+            placeholder="Enter username..."
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <Input
+            type="password"
+            placeholder="Enter password..."
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button type="submit" content={"Log in"} />
+        </form>
+      </div>
+      <img src={greencity} alt="green city" className="greenCity" />
     </div>
   )
 }

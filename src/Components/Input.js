@@ -36,6 +36,7 @@ const Input = ({
   return (
     <div>
       <div className="dropdown">
+        <div className="center">
         {icon && <span className="input-icon">{icon}</span>}
         <input
           type={type}
@@ -43,7 +44,7 @@ const Input = ({
           value={value}
           onChange={handleInputChange}
           className={`input ${styling}`}
-        />
+        /></div>
         {showSuggestions && filteredSuggestions.length > 0 && (
           <ul className="suggestions">
             {filteredSuggestions.map((suggestion, index) => (

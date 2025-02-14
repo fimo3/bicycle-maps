@@ -13,7 +13,12 @@ import Profile from "./Components/Profile" // Import the Profile component
 import { AuthContext } from "./Components/AuthProvider"
 import Button from "./Components/Button"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faHome, faMoon, faSignOut, faSun } from "@fortawesome/free-solid-svg-icons"
+import {
+  faHome,
+  faMoon,
+  faSignOut,
+  faSun,
+} from "@fortawesome/free-solid-svg-icons"
 import avatar from "./images/avatar.png"
 
 export default function App() {
@@ -54,22 +59,18 @@ export default function App() {
                   <li>
                     <Link to="/">
                       <p className="SAFCycle-nav-title">
-                      <FontAwesomeIcon style={{color:"#f2f2f2"}} icon={faHome}/> SAFCycle</p>
+                        <FontAwesomeIcon
+                          style={{ color: "#f2f2f2" }}
+                          icon={faHome}
+                        />{" "}
+                        SAFCycle
+                      </p>
                     </Link>
                   </li>
                   <li>
                     <Link to="/contact">
                       <p>Contact</p>
                     </Link>
-                  </li>
-                  <li>
-                    <Button
-                      onClick={toggleTheme}
-                      className="switcher theme-switcher"
-                      content={
-                        <FontAwesomeIcon icon={isLightMode ? faMoon : faSun} />
-                      }
-                    ></Button>
                   </li>
                   {isAuthenticated ? (
                     <>
@@ -97,6 +98,15 @@ export default function App() {
                       </Link>
                     </li>
                   )}
+                  <li>
+                    <Button
+                      onClick={toggleTheme}
+                      className="switcher theme-switcher"
+                      content={
+                        <FontAwesomeIcon icon={isLightMode ? faMoon : faSun} />
+                      }
+                    ></Button>
+                  </li>
                 </ul>
               </div>
             </nav>
