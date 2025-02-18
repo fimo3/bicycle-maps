@@ -20,7 +20,7 @@ const Login = () => {
   }
 
   return (
-    <div className="grid-cols-2">
+    <div className="flex-center">
       <div className="log-form">
         <h1>
           Login
@@ -48,7 +48,7 @@ const Login = () => {
           <Button type="submit" content={"Log in"} />
         </form>
       </div>
-      <img src={greencity} alt="green city" className="greenCity" />
+      <img src={greencity} alt="green city" width="" className="greenCity" />
     </div>
   )
 }

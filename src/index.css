@@ -1,0 +1,441 @@
+/* Import Roboto Condensed */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+
+/* -------------------------
+   Light Mode Variables (Default)
+------------------------- */
+:root {
+  --color-primary: #96d953;
+  --color-secondary: #efefe5; /*efefe5*/
+  
+  --color-bg: var(--color-secondary);
+  --color-text: #000000;
+  
+  --color-link: var(--color-primary);
+  --color-button-bg: var(--color-primary);
+  --color-button-text: #ffffff;
+}
+
+/* -------------------------
+   Dark Mode Overrides
+------------------------- */
+.dark {
+  --color-primary: #2e5e2f;
+  --color-secondary: #2e2e2e;
+  
+  --color-bg: var(--color-secondary);
+  --color-text: #ffffff;
+  
+  --color-link: var(--color-primary);
+  --color-button-bg: var(--color-primary);
+  --color-button-text: #ffffff;
+}
+
+/* Ensure the entire page background updates */
+html, body {
+  background-color: var(--color-bg) !important;
+}
+
+/* -------------------------
+   Global Styles
+------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.App {
+  font-family: 'Roboto Condensed', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* -------------------------
+    Text Sizes
+------------------------- */
+h1 {
+  font-size: 3em;
+  color: var(--color-primary);
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+}
+h2 {
+  font-size: 2.35em;
+}
+h3 {
+  font-size: 1.9em;
+}
+h4 {
+  font-size: 1.5em;
+}
+p {
+  font-size: 1.15em;
+}
+
+/* -------------------------
+   Layout: Home Page Flexbox
+------------------------- */
+.flex-justify-center {
+  display: flex;
+  padding: 5px 10px;
+}
+
+.map {
+  flex: 2;
+  overflow: hidden;
+}
+.map-container {
+  border-radius: 15px;
+}
+
+/* Consolidated aside-home-page:
+   Uses flex properties along with width/margin adjustments.
+------------------------- */
+.aside-home-page {
+  flex: 1;
+  display: flex;
+  width: 40%;
+  margin-right: 20px;
+}
+
+/* -------------------------
+   Navigation Styles
+------------------------- */
+.App-header {
+  background-color: var(--color-primary);
+  padding: 10px;
+}
+
+nav .navul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.navul li {
+  display: inline-block;
+}
+.navul li a {
+  color: var(--color-button-text);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+.navul li a:hover {
+  color: var(--color-button-text);
+}
+.flex-center {
+  display:flex;
+  justify-content: space-around;
+}
+.brandlogos {
+  display:flex;
+  justify-content:start;
+}
+.header {
+  display:flex;
+  justify-content:space-between;
+  align-items: center;
+  max-width:50%;
+}
+.directions-info-pane {
+  overflow-y: scroll;
+  max-height:500px;
+  max-width: 50%;
+}
+/* -------------------------
+   Logo Styling
+------------------------- */
+.logo {
+  border-radius: 30px;
+  max-width: 25%;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+.greenCity {
+  border-radius: 30px;
+  max-width: 25%;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+/* -------------------------
+   Theme Toggle Button
+------------------------- */
+.theme-switcher {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-button-text);
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+.theme-switcher:hover {
+  color: var(--color-button-text);
+}
+
+/* -------------------------
+   Button Styles
+------------------------- */
+button,
+.button {
+  background-color: var(--color-button-bg);
+  color: var(--color-button-text);
+  border: none;
+  border-radius: 15px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* -------------------------
+   Profile & Auth Styles
+------------------------- */
+.small-avatar {
+  border-radius: 50px;
+}
+.flex {
+  display: flex;
+  align-items: center;
+}
+.padding-left-12px {
+  padding-left: 12px;
+}
+
+/* -------------------------
+   Routes & Page Content
+------------------------- */
+.route-pane {
+  background-color: var(--color-bg);
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* -------------------------
+   Responsive Adjustments
+------------------------- */
+@media (max-width: 768px) {
+  .flex-justify-center {
+    flex-direction: column;
+  }
+  .map {
+    width: 100px;
+    height: auto;
+  }
+  .aside-home-page {
+    width: 100px;
+    margin-right: 0;
+    align-items: center;
+  }
+}
+
+/* -------------------------
+   Input Component Styling
+------------------------- */
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  overflow: hidden;
+  background: var(--color-secondary);
+  padding: 5px 10px;
+}
+
+.input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+  max-width:75%;
+  font-size: 1rem;
+  font-family: 'Roboto Condensed', sans-serif;
+  border-bottom: solid 2px var(--color-primary);
+  background: transparent;
+  color: var(--color-text);
+  transition: border-color 0.3s ease, transform 0.2s ease;
+}
+.padding-top {
+  padding-top: 5px;
+}
+.margin-top {
+  margin-top: 10px;
+}
+.input:focus {
+  border-bottom: solid 2px var(--color-secondary);
+  transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+.input-icon {
+  margin-right: 10px;
+  color: var(--color-primary);
+  font-size: 1.2rem;
+}
+
+.suggestions {
+  list-style: none;
+  background: var(--color-bg);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 0;
+  position: absolute;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.suggestions li {
+  padding: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  border-radius: 5px;
+}
+
+.suggestions li:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+/* -------------------------
+   Homepage & Fixed Map Layout
+------------------------- */
+.homepage-container {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.fixed-map {
+  position: fixed;
+  top: 80px;
+  right: 15px;
+  /* Removed fixed height/width to allow natural sizing */
+  max-height: calc(100% - 75px);
+  width: 50%;    /* Adjust width as needed */
+  z-index: 1000; /* Ensure it stays on top */
+}
+
+/* -------------------------
+   Directions Info Pane Styles
+------------------------- */
+.directions-info-pane {
+  padding: 20px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 20px auto;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+/* Switcher (Foot / Cycle) */
+.directions-info-pane .switcher {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.directions-info-pane .switcher button {
+  background-color: var(--color-button-bg);
+  color: var(--color-button-text);
+  border: none;
+  border-radius: 15px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+.directions-info-pane .switcher button:hover {
+  background-color: #569d1b; /* Slightly darker shade */
+}
+
+/* Routes Container & Cards */
+.directions-info-pane .routes-container {
+  margin-bottom: 20px;
+}
+.directions-info-pane .routes-title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.directions-info-pane .routes-card {
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #ffffff; /* Fallback; inline style from routeColors takes precedence */
+  color: var(--color-text);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.directions-info-pane .routes-card h4.route-title {
+  margin: 0 0 10px;
+  font-size: 1.2em;
+}
+.directions-info-pane .route-info {
+  font-size: 0.95em;
+  margin-bottom: 10px;
+}
+.directions-info-pane .route-info p {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.directions-info-pane .weather-info {
+  font-size: 0.9em;
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+/* Directions List */
+.directions-info-pane .directions-container {
+  margin-top: 20px;
+}
+.directions-info-pane .directions-title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.directions-info-pane .directions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.directions-info-pane .direction-step {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 0.95em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+.directions-info-pane .direction-step p {
+  margin: 0;
+}
+
+/* Responsive Adjustments for Directions Pane */
+@media (max-width: 600px) {
+  .directions-info-pane {
+    padding: 15px;
+    margin: 10px;
+  }
+  
+  .directions-info-pane .switcher {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
