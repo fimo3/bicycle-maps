@@ -6,7 +6,7 @@ import {
   Link,
   Navigate,
 } from "react-router-dom"
-import Side from "./Components/Side"
+import Side from "./Components/HomePage"
 import Contact from "./Contact/Contact"
 import Login from "./Components/Login"
 import Profile from "./Components/Profile" // Import the Profile component
@@ -62,8 +62,7 @@ export default function App() {
                         <FontAwesomeIcon
                           style={{ color: "#f2f2f2" }}
                           icon={faHome}
-                        />{" "}
-                        SAFCycle
+                        />
                       </p>
                     </Link>
                   </li>

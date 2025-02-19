@@ -25,10 +25,10 @@ const DirectionsInfoPane = ({
         />
       </div>
 
-      <div className="routes-container">
-        <h3 className="routes-title">
-          <strong>Top Routes</strong>
-        </h3>
+      <h3 className="routes-title">
+        <strong>Top Routes</strong>
+      </h3>
+      <div className="routes-container flex">
         {directions && directions.length > 0 ? (
           directions.map((route, index) => (
             <div
@@ -76,7 +76,10 @@ const DirectionsInfoPane = ({
             {directions[0].instructions.map((step, index) => (
               <li key={index} className="direction-step">
                 <p>
-                  {step.text}{index<(directions[0].instructions.length-1)?" ("+Math.round(step.distance)+" meters)":"."}
+                  {step.text}
+                  {index < directions[0].instructions.length - 1
+                    ? " (" + Math.round(step.distance) + " meters)"
+                    : "."}
                 </p>
               </li>
             ))}

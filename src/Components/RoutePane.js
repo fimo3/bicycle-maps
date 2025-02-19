@@ -111,7 +111,7 @@ const RoutePane = ({ onSubmit }) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label>Start location: </label>
+        <label className=" margin-top">Start location: </label>
         <Input
           type="text"
           value={startLocation}
@@ -124,10 +124,13 @@ const RoutePane = ({ onSubmit }) => {
           }
           styling="route-input"
           placeholder="e.g. Your location"
+          className=" margin-top"
           suggestions={startSuggestions.map((suggestion) => suggestion.name)}
         />
-        <label>End location: </label>
+        <br />
+        <label className=" margin-top">End location: </label>
         <Input
+          className=" margin-top"
           type="text"
           value={endLocation}
           onChange={(e) =>
@@ -137,11 +140,13 @@ const RoutePane = ({ onSubmit }) => {
           placeholder="e.g. 'Milin Kamak' №34 road..."
           suggestions={endSuggestions.map((suggestion) => suggestion.name)}
         />
-        <Button
+        <button
           type="submit"
-          content="Find route"
           styling="button-submit"
-        />
+          className="Button margin-top"
+        >
+          Find route
+        </button>
       </form>
     </div>
   )

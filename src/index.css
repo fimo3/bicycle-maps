@@ -1,916 +1,441 @@
-body,
-html {
+/* Import Roboto Condensed */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+
+/* -------------------------
+   Light Mode Variables (Default)
+------------------------- */
+:root {
+  --color-primary: #96d953;
+  --color-secondary: #efefe5; /*efefe5*/
+  
+  --color-bg: var(--color-secondary);
+  --color-text: #000000;
+  
+  --color-link: var(--color-primary);
+  --color-button-bg: var(--color-primary);
+  --color-button-text: #ffffff;
+}
+
+/* -------------------------
+   Dark Mode Overrides
+------------------------- */
+.dark {
+  --color-primary: #2e5e2f;
+  --color-secondary: #2e2e2e;
+  
+  --color-bg: var(--color-secondary);
+  --color-text: #ffffff;
+  
+  --color-link: var(--color-primary);
+  --color-button-bg: var(--color-primary);
+  --color-button-text: #ffffff;
+}
+
+/* Ensure the entire page background updates */
+html, body {
+  background-color: var(--color-bg) !important;
+}
+
+/* -------------------------
+   Global Styles
+------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto Condensed', sans-serif;
   margin: 0;
   padding: 0;
-  height: 100vh;
-  background-color: #f2f2f2;
-  font-family: "Industry Test Book", sans-serif;
+  font-weight: bold;
+  color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 .App {
-  height: 100vh;
-}
-.home {
-  width:100%;
-}
-.home-li {
-  display: flex;
-  justify-content: center;
-}
-nav ul {
-  list-style-type: none;
-  display: flex;
-  justify-content: space-evenly;
+  font-family: 'Roboto Condensed', sans-serif;
   margin: 0;
-  padding-left: 0px;
-  padding-right: 0px;
-}
-/* div into the nav */
-.navul {
-  align-items: center;
-}
-
-nav ul li:first-child {
-  display: flex;
-}
-nav ul li a p {
-  padding: 0px;
+  padding: 0;
+  font-weight: bold;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* side-js should be the welcome title + lets goooooooooo */
-.side-js {
-  display: flex;
+/* -------------------------
+    Text Sizes
+------------------------- */
+h1 {
+  font-size: 3em;
+  color: var(--color-primary);
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
 }
-
-/*p, h, code*/
-p {
-  font-size: 1.3em;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
 h2 {
-  padding-left: 20px;
   font-size: 2.35em;
 }
 h3 {
-  padding-left: 20px;
   font-size: 1.9em;
 }
 h4 {
-  padding-left: 20px;
   font-size: 1.5em;
 }
-.SAFCycle-nav-title {
-  font-family: 'Industry Test Ultra';
-  color: #f2f2f2;
-  font-size:23px;
-}
-form {
-  align-items: center;
-  justify-content: center;
-  padding-left:20px;
+p {
+  font-size: 1.15em;
 }
 
-label {
-  font-size: 1.2em;
-}
-.title {
-  display: flex;
-  align-items: center;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-/*route card*/
-
-.routes-card {
-  border-radius: 5px;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.routes-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
-}
-
-.route-h3{
-  display:inline-block;
-}
-.route-input {
-  margin-bottom:20px;
-  margin-top:20px;
-}
-
-/* dropdown params*/
-
-.dropdown {
-  position: relative;
-  width: 90%;
-}
-/*suggestion params*/
-
-.suggestions li {
-  padding: 10px;
-  cursor: pointer;
-}
-    
-/* the switcher for the bicycle to human route conversion *switching noises* */
-
-.switcher {
-  display:flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.switcher .Button {
-  padding: 5px 5px;
-}
-.switcher .Button:last-child {
-  margin-right: 25px;
-}
-/*route card end*/
-
-/*basic parameters*/
-
+/* -------------------------
+   Layout: Home Page Flexbox
+------------------------- */
 .flex-justify-center {
   display: flex;
-  height: 91.25vh;
+  padding: 5px 10px;
 }
-/*;)*/
-.padding-left-12px {
-  padding-left: 13px;
+
+.map {
+  flex: 2;
+  overflow: hidden;
 }
-.sides {
-  display:flex;
-  justify-content: space-between;
-  padding-right: 25px;
+.map-container {
+  border-radius: 15px;
 }
-.grid-cols-2 {
-  display:flex;
-  height: 80vh;
+
+/* Consolidated aside-home-page:
+   Uses flex properties along with width/margin adjustments.
+------------------------- */
+.aside-home-page {
+  flex: 1;
+  display: flex;
+  width: 40%;
+  margin-right: 20px;
 }
-.center {
-  display:flex;
-  justify-content:space-around;
+
+/* -------------------------
+   Navigation Styles
+------------------------- */
+.App-header {
+  background-color: var(--color-primary);
+  padding: 10px;
+}
+
+nav .navul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
   align-items: center;
+  justify-content: space-around;
 }
-.align-center {
+.navul li {
+  display: inline-block;
+}
+.navul li a {
+  color: var(--color-button-text);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+.navul li a:hover {
+  color: var(--color-button-text);
+}
+.flex-center {
+  display:flex;
+  justify-content: space-around;
+}
+.brandlogos {
+  display:flex;
+  justify-content:start;
+}
+.header {
+  display:flex;
+  justify-content:space-between;
   align-items: center;
-  justify-content: center;
+  max-width:50%;
+}
+.directions-info-pane {
+  overflow-y: scroll;
+  max-height:500px;
+  max-width: 50%;
+}
+/* -------------------------
+   Logo Styling
+------------------------- */
+.logo {
+  border-radius: 30px;
+  max-width: 25%;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+.greenCity {
+  border-radius: 30px;
+  max-width: 25%;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+/* -------------------------
+   Theme Toggle Button
+------------------------- */
+.theme-switcher {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-button-text);
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+.theme-switcher:hover {
+  color: var(--color-button-text);
+}
+
+/* -------------------------
+   Button Styles
+------------------------- */
+button,
+.button {
+  background-color: var(--color-button-bg);
+  color: var(--color-button-text);
+  border: none;
+  border-radius: 15px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* -------------------------
+   Profile & Auth Styles
+------------------------- */
+.small-avatar {
+  border-radius: 50px;
 }
 .flex {
   display: flex;
   align-items: center;
 }
-.p-l-20{
-  padding-left:20px;
+.padding-left-12px {
+  padding-left: 12px;
 }
 
-.Lets-go {
-  width:90%;
-  padding-left:20px;
+/* -------------------------
+   Routes & Page Content
+------------------------- */
+.route-pane {
+  background-color: var(--color-bg);
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 20px;
 }
-/* buttons buttons and more buttons!!! */
-.button-submit {
-  margin: 0;
+
+/* -------------------------
+   Responsive Adjustments
+------------------------- */
+@media (max-width: 768px) {
+  .flex-justify-center {
+    flex-direction: column;
+  }
+  .map {
+    width: 100px;
+    height: auto;
+  }
+  .aside-home-page {
+    width: 100px;
+    margin-right: 0;
+    align-items: center;
+  }
+}
+
+/* -------------------------
+   Input Component Styling
+------------------------- */
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  overflow: hidden;
+  background: var(--color-secondary);
+  padding: 5px 10px;
+}
+
+.input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+  max-width:75%;
+  font-size: 1rem;
+  font-family: 'Roboto Condensed', sans-serif;
+  border-bottom: solid 2px var(--color-primary);
+  background: transparent;
+  color: var(--color-text);
+  transition: border-color 0.3s ease, transform 0.2s ease;
+}
+.padding-top {
+  padding-top: 5px;
+}
+.margin-top {
   margin-top: 10px;
-  margin-bottom: 5px;
-  padding:0px;
-  width:92.5%;
 }
-/*directions-info-pane */
+.input:focus {
+  border-bottom: solid 2px var(--color-secondary);
+  transition: border-color 0.3s ease, transform 0.2s ease;
+}
 
-.directions-info-pane h3 {
-  margin: 20px;
-  padding: 5px;
-  margin-left: 1.75px;
-  margin-right: 15px;
+.input-icon {
+  margin-right: 10px;
+  color: var(--color-primary);
+  font-size: 1.2rem;
 }
-.directions-info-pane h4 {
-  margin: 20px;
-  padding: 5px;
-  margin-left: 1.75px;
-  margin-right: 15px;
+
+.suggestions {
+  list-style: none;
+  background: var(--color-bg);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 0;
+  position: absolute;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
-.directions-info-pane p {
-  margin: 20px;
-  padding: 5px;
-  margin-left: 1.75px;
-  margin-right: 15px;
+
+.suggestions li {
+  padding: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  border-radius: 5px;
 }
-.directions-info-pane ul {
-  list-style-type: none;
+
+.suggestions li:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+/* -------------------------
+   Homepage & Fixed Map Layout
+------------------------- */
+.homepage-container {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.fixed-map {
+  position: fixed;
+  top: 80px;
+  right: 15px;
+  /* Removed fixed height/width to allow natural sizing */
+  max-height: calc(100% - 75px);
+  width: 50%;    /* Adjust width as needed */
+  z-index: 1000; /* Ensure it stays on top */
+}
+
+/* -------------------------
+   Directions Info Pane Styles
+------------------------- */
+.directions-info-pane {
+  padding: 20px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 20px auto;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+/* Switcher (Foot / Cycle) */
+.directions-info-pane .switcher {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.directions-info-pane .switcher button {
+  background-color: var(--color-button-bg);
+  color: var(--color-button-text);
+  border: none;
+  border-radius: 15px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+.directions-info-pane .switcher button:hover {
+  background-color: #569d1b; /* Slightly darker shade */
+}
+
+/* Routes Container & Cards */
+.directions-info-pane .routes-container {
+  margin-bottom: 20px;
+}
+.directions-info-pane .routes-title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.directions-info-pane .routes-card {
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #ffffff; /* Fallback; inline style from routeColors takes precedence */
+  color: var(--color-text);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.directions-info-pane .routes-card h4.route-title {
+  margin: 0 0 10px;
+  font-size: 1.2em;
+}
+.directions-info-pane .route-info {
+  font-size: 0.95em;
+  margin-bottom: 10px;
+}
+.directions-info-pane .route-info p {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.directions-info-pane .weather-info {
+  font-size: 0.9em;
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+/* Directions List */
+.directions-info-pane .directions-container {
+  margin-top: 20px;
+}
+.directions-info-pane .directions-title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.directions-info-pane .directions-list {
+  list-style: none;
   padding: 0;
   margin: 0;
 }
-.directions-info-pane li {
-  list-style-type: none;
-}
-
-/* end of directions-info-pane */
-/*brand-logo*/
-.brandlogos {
-  display: flex;
-  justify-content:start;
-  align-items: center;
-}
-.brandlogo-email {
-  color:white;
-  margin-left: 15px;
-  background-color: #e40000;
-  border-radius: 50%;
-  padding-top:5px;
-  padding-left: 7.5px;
-  padding-bottom:5px;
-  padding-right: 7.5px;
-}
-.brandlogo-instagram {
-  color:white;
-  margin-left: 15px;
-  background-color: #de0089;
-  border-radius: 50%;
-  padding-top:5px;
-  padding-left: 7.5px;
-  padding-bottom:5px;
-  padding-right: 7.5px;
-}
-.brandlogo-phone {
-  color:white;
-  margin-left: 15px;
-  background-color: #96d953;
-  border-radius: 50%;
-  padding-top:5px;
-  padding-left: 7.5px;
-  padding-bottom:5px;
-  padding-right: 7.5px;
-}
-/*<map>*/
-.map {
-  width: 66.66%;
-  height: 100%;
-}
-
-.leaflet-container {
+.directions-info-pane .direction-step {
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 15px;
-  z-index: 1;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 0.95em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+.directions-info-pane .direction-step p {
+  margin: 0;
 }
 
-/*</map>*/
-/*input*/
-
-.input:focus {
-  border-radius: 10px;
-  width: 60%;
-  outline: none;
-}
-
-.input:not(:focus, :hover) {
-  .suggestions {
-    visibility: hidden;
-  }
-}
-/*end of input*/
-/*image formating*/
-.avatar-big {
-  width: 100px;
-}
-
-.home-logo {
-  margin-top: 0px;
-  margin-bottom: 5px;
-}
-/*end of image formating*/
-/*HAI!!!1! login' and signin'*/
-
-h2.userinfo {
-  margin: 0px;
-}
-.Logout {
-  width: 10px;
-}
-/*I'M OUT OF UR login' and signin'*/
-/*mobile version *phone vibrating* */
-
-@media (max-width: 768px) {
-  body,
-  html {
-    text-align: center;
-  }
-
-  .aside-home-page {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: auto;
-  }
-
-  .home {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  .X {
-    max-width: 20%;
-  }
-
-  .invisible {
-    visibility: hidden;
-  }
-
-  .home-page-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    width: 60%;
-    height: auto;
-  }
-
-  .map {
-    width: 99%;
-  }
-
-  .side-js {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  p,
-  .Button,
-  label {
-    font-size: 1.2em;
-    padding: 0 10px;
-    text-align: center;
-  }
-
-  h1 {
-    font-size: 1.9em;
-  }
-
-  .Button {
-    width: 80%;
-    padding: 10px;
-  }
-
-  .directions-mini-pane {
-    margin: 20px auto;
-    width: 90%;
-    text-align: center;
-  }
-}
-/*for sorting **working** */
-.greenCity{
-  border-radius: 15px;
-  margin: 15px;
-  width:50%;
-  margin-bottom: 0px;
-}
-.log-form {
-  width: 50%;
-  align-content: space-between;
-}
-.routes-styles {
-  display: flex;
-}
-/*light mode settings */
-
-.light-mode {
-  background-color: #f2f2f2;
-  transition: color 0.9s;
-  nav {
-    background-color: #96d953;
-  }
-
-  h1 {
-    padding-left: 20px;
-    padding-right: 20px;
-    font-size: 2.65em;
-    padding-top: 0px;
-    text-decoration-line: underline;
-    text-decoration-style: wavy;
-    text-decoration-thickness: 3px;
-    color: #96d953;
-  }
-
-  a {
-    color: #2e2e2e;
-    text-decoration: none;
-  }
-
-  .aside-home-page {
-    background-color: #f2f2f2;
-    display: flex;
-    float: left;
-    width: 33.333%;
-    height: 100%;
-    overflow-y: auto;
-  }
-
+/* Responsive Adjustments for Directions Pane */
+@media (max-width: 600px) {
   .directions-info-pane {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    background-color: #f2f2f2;
-    padding: 10px;
-    border-radius: 15px;
-    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2);
-    max-width: 250px;
-    overflow-y: auto;
-    font-size: 14px;
-    z-index: 1000;
-    max-height: 50%;
-    justify-content: space-between;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-
-  .custom-spinner-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Dims the screen */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-  }
-
-  .log-form {
-    margin: 15px;
-    padding: 1% 2%;
-    border-radius: 15px;
-    background-color: #63a422;
-  }
-  .custom-spinner {
-    width: 50px;
-    height: 50px;
-    border: 15px solid #cac1b9;
-    border-top: 5px solid #96d953;
-    border-bottom: 20px solid #96d953;
-    border-radius: 50%;
-    border-top-right-radius: 15%;
-    border-bottom-left-radius: 5%;
-    animation: spin 0.9s linear infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-
-  .suggestions {
-    position: absolute;
-    background-color: white;
-    max-height: 150px;
-    overflow-y: auto;
-    width: 100%;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    z-index: 1000;
-  }
-  a.email {
-    color: #3a3a3a;
-  }
-  .small-avatar {
-    width: 40px; /* Smaller size */
-    height: 40px;
-    border-radius: 50%; /* Circular shape */
-    border: 2px solid #f2f2f2; /* Optional border */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  }
-
-  .suggestions li:hover {
-    background-color: #f2f2f2;
-  }
-
-  button a {
-    color: #f2f2f2;
-    text-decoration: none;
-  }
-
-  .route-pane {
-    background-color: #e8e8e6;
-    border-radius: 15px;
-    width:100%;
-    height:100%;
-  }
-
-  .input {
-    background-color: #f2f2f2;
-    color: black;
-    width: 100%;
-    border-radius: 5px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    border:none;
-    transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+    padding: 15px;
+    margin: 10px;
   }
   
-  .avatar-big-container {
-    position: relative;
-    display: inline-block;
-    width: 100px;
-    height: 100px;
-    border: 5px solid #f2f2f2;
-    border-radius: 50%;
-    overflow: hidden;
-    display: inline-block;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-
-  .avatar-big-container:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Larger shadow on hover */
-  }
-
-  p.userinfo {
-    color: #494949;
-    font-style: italic;
-    font-size: x-large;
-  }
-  .profile-page {
-    background-color: #7db446;
-    border-radius: 30px;
-  }
-
-  .Button {
-    font-size: 1.3em;
-    font-family: "Industry Test Ultra", sans-serif;
-    background-color: #96d953;
-    color: #f2f2f2;
-    border: none;
-    cursor: pointer;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 25%;
-    padding-right: 25%;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
-    box-shadow: 0px 0px 0px #31313180;
-    transition: all 0.12s ease-in-out;
-  }
-  .Button:active {
-    border-radius: 10px;
-    outline: none;
-    box-shadow: 0px 1px 2px #3131314d;
-    transform: scale(0.99);
-  }
-
-  hr {
-    background-color: #e1dad7;
-    color: #e1dad7;
-    width: 100%;
-  }
-  img.logo {
-    margin-top: 10px;
-    border-radius: 20%;
-    margin-right: 10%;
-    box-shadow: 0px 0px 0px #000000a3;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  img.logo:hover {
-    transform: scale(1.05) rotate(3deg) translate(10px, 0);
-    box-shadow: 0px 2px 4px #000000a3;
-  }
-
-  .X {
-    padding: 5px 10px;
-    margin-top: 35px;
-    margin-right: 15px;
-    border-radius: 10%;
-    background-color: #df4444;
-  }
-
-
-  .switch-to-dark-button {
-    position: absolute;
-    background-color: #f2f2f2;
-    padding: 10px;
-    border-radius: 15px;
-    top: 10px;
-    right: 10px;
-    z-index: 999;
-  }
-}
-/* dark-mode*/
-.dark {
-  background-color: #2e2e2e;
-  transition: color 0.9s;
-  nav {
-    background-color: #2e5e2f;
-  }
-
-  .small-avatar {
-    width: 40px; /* Smaller size */
-    height: 40px;
-    border-radius: 50%; /* Circular shape */
-    border: 2px solid #f2f2f2; /* Optional border */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  }
-
-  a.email {
-    color: #3a3a3a;
-  }
-
-  p {
-    color: white;
-    font-size: 1.3em;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  h1 {
-    padding-left: 20px;
-    padding-right: 20px;
-    font-size: 2.65em;
-    padding-top: 0px;
-    text-decoration-line: underline;
-    text-decoration-style: wavy;
-    text-decoration-thickness: 3px;
-    color: #96d953;
-  }
-
-  a {
-    color: #f2f2f2;
-    text-decoration: none;
-  }
-  .contact-container p {
-    color: black;
-  }
-
-  h2,
-  h3,
-  h4 {
-    padding-left: 20px;
-    color: white;
-  }
-  label {
-    color: white;
-  }
-
-  .aside-home-page {
-    background-color: #2e2e2e;
-    display: flex;
-    float: left;
-    width: 33.333%;
-    height: 100%;
-    overflow-y: auto;
-  }
-
-  .directions-info-pane {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    background-color: #2e2e2e;
-    padding: 10px;
-    border-radius: 15px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    max-width: 250px;
-    overflow-y: auto;
-    font-size: 14px;
-    z-index: 1000;
-    max-height: 50%;
-    justify-content: space-between;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-
-  .custom-spinner-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-  }
-
-  .log-form {
-    margin: 15px;
-    padding: 1% 2%;
-    border-radius: 15px;
-    display: flex;
+  .directions-info-pane .switcher {
     flex-direction: column;
-    justify-content: center;
-  }
-
-  .switcher {
-    display: flex;
-    background-color: #484848;
-    border-radius: 15px;
-    align-content: space-evenly;
-    width: 75%;
-  }
-
-  .custom-spinner {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border-top-right-radius: 15%;
-    border-bottom-left-radius: 5%;
-    animation: spin 0.9s linear infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-  .directions-info-pane h3 {
-    margin: 20px;
-    padding: 5px;
-    margin-left: 1.75px;
-    margin-right: 15px;
-    border-radius: 10px;
-  }
-  .directions-info-pane h4 {
-    margin: 20px;
-    padding: 5px;
-    margin-left: 1.75px;
-    margin-right: 15px;
-    border-radius: 3px;
-  }
-  .directions-info-pane p {
-    margin: 20px;
-    padding: 5px;
-    margin-left: 1.75px;
-    margin-right: 15px;
-    border-radius: 3px;
-  }
-  .suggestions {
-    position: absolute;
-    background-color: black;
-    border-top: none;
-    border-radius: 0 0 5px 5px;
-    max-height: 150px;
-    overflow-y: auto;
-    width: 100%;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    z-index: 1000;
-  }
-
-  .suggestions li {
-    padding: 10px;
-    cursor: pointer;
-    color: white;
-  }
-
-  .suggestions li:hover {
-    background-color: #2e2e2e;
-  }
-
-  .leaflet-container {
-    border-radius: 15px;
-    z-index: 1;
-  }
-
-  button a {
-    color: #f2f2f2;
-    text-decoration: none;
-  }
-
-  .directions-mini-pane {
-    background-color: #4b4b48;
-    border-radius: 15px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin: 20px;
-  }
-
-  .input {
-    background-color: black;
-    color: white;
-    width: 90%;
-    border-radius: 5px;
-    padding-top: 15px;
-    padding: 10px;
-    border:none;
-    transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out,
-      border-color 0.2s ease-in-out;
-  }
-
-  .avatar-big-container {
-    position: relative;
-    display: inline-block;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    overflow: hidden;
-    display: inline-block;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-
-
-  .avatar-big-container:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  }
-
-  p.userinfo {
-    color: #cac1b9;
-    font-style: italic;
-    font-size: x-large;
-  }
-
-  
-  .profile-page {
-    background-color: #1f4a20;
-    border-radius: 30px;
-  }
-
-  .input:focus {
-    border-radius: 10px;
-    width: 60%;
-    outline: none;
-  }
-
-  .Button {
-    font-size: 1.3em;
-    font-family: "Industry Test Ultra", sans-serif;
-    background-color: #2e5e2f;
-    color: #f2f2f2;
-    cursor: pointer;
-    border: none;
-    margin-left: 20px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 25%;
-    padding-right: 25%;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
-    box-shadow: 0px 0px 0px #31313180;
-    transition: all 0.12s ease-in-out;
-  }
-  .Button:active {
-    border-radius: 10px;
-    border-color: #2e4813;
-    outline: none;
-    box-shadow: 0px 1px 2px #3131314d;
-    transform: scale(0.99);
-  }
-
-  hr {
-    background-color: #5c5c5c;
-    color: #5c5c5c;
-    width: 100%;
-  }
-  img.logo {
-    margin-top: 10px;
-    border-radius: 20%;
-    margin-left: 10px;
-    box-shadow: 0px 0px 0px #000000a3;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  img.logo:hover {
-    transform: scale(1.05) rotate(3deg) translate(10px, 0);
-    box-shadow: 0px 2px 4px #000000a3;
-  }
-  .home-logo {
-    margin-top: 0px;
-    margin-bottom: 5px;
-  }
-
-  .routes-styles {
-    display: flex;
-  }
-  .switch-to-dark-button {
-    position: absolute;
-    background-color: #3a3a3a;
-    padding: 10px;
-    border-radius: 15px;
-    top: 10px;
-    right: 10px;
-    z-index: 999;
+    gap: 5px;
   }
 }
